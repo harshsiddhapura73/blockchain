@@ -1,0 +1,140 @@
+package org.example;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+
+        List<Integer> numberList = new ArrayList<>();
+        numberList.add(101);
+        numberList.add(150);
+        numberList.add(111);
+        numberList.add(-168);
+        numberList.add(198);
+        numberList.add(135);
+        numberList.add(150);
+        numberList.add(101);
+        numberList.add(125);
+        numberList.add(148);
+
+        numberList.forEach(k -> System.out.print(k + " "));
+        System.out.println();
+
+
+        //1.filter all even numbers from a list
+        System.out.println();
+
+        numberList.stream().filter(x -> x%2 == 0).forEach(System.out::println);
+
+        System.out.println();
+        numberList.forEach(k-> {
+            if (k % 2 ==0) {
+                System.out.println(k);
+            }
+        });
+
+        System.out.println();
+
+        List<Integer> newList = numberList.stream().filter(x -> x%2 == 0).toList();
+        System.out.println(newList);
+
+        System.out.println("-----------------------------------------------------------------------");
+
+//      2.find all odd numbers greater than 120
+        numberList.stream().filter(x -> x>120 && x%2 == 1).forEach(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      3.convert all strings to uppercase using streams.
+        List<String> convertUpercase = Arrays.asList("jay","mit","raj","parth","krishiv","ankesh","ajay");
+        convertUpercase.stream().map(x-> x.toUpperCase()).forEach(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      4.count the total number of elements
+        System.out.println(numberList.stream().toList().size());
+        System.out.println("-----------------------------------------------------------------------");
+
+
+//      5.find the maximum element
+        numberList.stream().max(Integer::compareTo).ifPresent(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      6.find the minimum element from a list
+        numberList.stream().min(Integer::compareTo).ifPresent(System.out::println);
+        numberList.stream().min(Integer::compare).ifPresent(System.out::println);
+        numberList.stream().reduce(Integer::min).ifPresent(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      7.remove duplicate elements from a list
+        numberList.stream().distinct().forEach(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      8.sort a list in ascending order
+        numberList.stream().sorted().forEach(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      9.sort a list in descending order
+        numberList.stream().sorted(Comparator.reverseOrder()).forEach(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      10.find the first element of
+        numberList.stream().findFirst().ifPresent(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      11.check if any element is greater than 50
+        boolean strOut = numberList.stream().anyMatch(x -> x>130);
+        if (strOut) System.out.println("Value is available"); else System.out.println("Value is not available");
+        System.out.println("-----------------------------------------------------------------------");
+
+//      12.check if all elements are positive numbers
+        System.out.println(numberList.stream().allMatch(x -> x>0));
+        System.out.println("-----------------------------------------------------------------------");
+
+//      13.calculate the sum of all elements
+        numberList.stream().reduce(Integer::sum).ifPresent(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+
+//      14.calculate the average of all numbers
+        numberList.stream().mapToInt(Integer::intValue).average().ifPresent(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+
+//      15.skip first 3 elements and print remaining elements
+        numberList.stream().skip(3).forEach(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      16.limit the stream to first 5 elements
+        numberList.stream().limit(5).forEach(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      17.find the square of each element
+        numberList.stream().map(x -> x*x).forEach(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      18.filter strings that start with the letter 'A'.
+        convertUpercase.stream().filter(x->x.startsWith("a")).forEach(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      19.convert a list of integers into a Set
+        Set<Integer> numberSet = numberList.stream().collect(Collectors.toSet());
+        System.out.println(numberSet);
+        System.out.println("-----------------------------------------------------------------------");
+
+
+//      20.flatten a list of lists using flatMap()
+        List<List<Integer>> flatMapExample = Arrays.asList(
+                Arrays.asList(1,5,2,7,3),
+                Arrays.asList(20,45,68,20),
+                Arrays.asList(32,65,78,98,10)
+        );
+        flatMapExample.stream().flatMap(x -> x.stream()).forEach(System.out::println);
+        System.out.println("-----------------------------------------------------------------------");
+
+//      21.group numbers into even and odd
+        numberList
+
+    }
+}
